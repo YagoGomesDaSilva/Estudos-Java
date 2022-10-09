@@ -1,0 +1,197 @@
+
+=============== CONCEITOS BASICOS DE OBJETO ======================
+
+Uma classe é uma especificação de um tipo, definindo atributos e comportamentos.
+
+Um objeto é uma instância de uma classe onde podemos definir valores para seus atributos.
+
+Para criar uma instância é não obrigatório preencher os valores de todos os atributos.
+
+Para criar uma instância precisamos usar a palavra chave new
+
+As variáveis que estamos nos referindo ficam diretamente na classe.Essas variáveis nós chamamos de atributos ou características de um objeto.
+Esses atributos podem ser chamados de campo ou propriedade.
+Esse tipo de variável especial que possui significado para objetos tem um comportamento diferente. 
+Quando acionamos a palavra-chave new e o Java instancia o objeto, todo os campos são zerados.
+
+Um objeto nunca está dentro de uma variável. O que tem dentro de uma variável é somente uma indicação a um objeto específico, uma REFERÊNCIA a um objeto específico.
+Ou seja, toda vez que se dá NEW em um objeto é reservado um espaço na memoria para o referido , e a variavel(variavel intanciada) criada tem só um numero que referencia o objeto.
+Ou seja, toda vez que se dá NEW em uma classe, é reservado um espaço na memoria para um objeto, que por sua vez, tem uma referência à classe.
+
+=============== CONCEITOS BASICOS DE METODO ======================
+
+Um método em Java é equivalente a uma função, subrotina ou procedimento em outras linguagens de programação.
+Não existe em Java o conceito de métodos globais. Todos os métodos devem sempre ser definidos dentro de uma classe.
+Metodos também podem ser chamados de comportamentos .
+
+=============== CONCEITOS BASICOS DE ENCAPSULAMENTO ======================
+
+O Encapsulamento serve para controlar o acesso aos atributos e métodos de uma classe.
+É uma forma de proteger os dados manipulados dentro da classe, além de determinar onde esta classe poderá ser manipulada.
+Usamos o nível de acesso mais restritivo da palavra chave "private".
+
+No encapsulamento você deve tornar suas variáveis/atributos privados e criar métodos de acesso (get e set) públicos.
+Em outras palavras, suas variáveis/atributos só podem ser acessadas diretamente dentro da classe.
+
+=============== CONCEITOS BASICOS DE METODO CONSTRUTOR ======================
+
+O (pseudo-)método construtor determina que ações devem ser executadas quando da criação de um objeto.
+Em Java, o construtor é definido como um método cujo nome deve ser o mesmo nome da classe e sem indicação do tipo de retorno -- nem mesmo void.
+O construtor sempre tem a seguinte assinatura: modificadores de acesso (public, private ou protected) + nome da classe + parâmetros (podendo ser nenhum). 
+
+=============== STATIC ===================
+
+Podemos definir os membros da classe static usando a palavra-chave static .
+Quando declaramos um membro de uma classe como estático significa que não importa quantos objetos da classe sejam criados, há apenas uma cópia do membro estático.
+
+Um membro estático é compartilhado por todos os objetos da classe. 
+Todos os dados estáticos são inicializados em zero quando o primeiro objeto é criado, se nenhuma outra inicialização estiver presente.
+
+-------------------------------------------------------------------------------------------------------------
+
+=============== HERANÇA ===================
+DEFINIÇÃO
+Uma subclasse é uma classe que vem de outra classe. Uma subclasse segue a condição e o comportamento de todos os seus ancestrais.
+A superclasse de conceito identifica o ancestral direto de uma classe e todas as suas classes ascendentes.
+
+A herança é um mecanismo que permite criar novas classes a partir de classes já existentes,
+aproveitando-se das características existentes na classe a ser estendida, ou seja,
+é uma propriedade pela qual as propriedades e o comportamento de uma classe são adquiridos por outra classe para fornecer reutilização de código.
+
+A sintaxe da linguagem, a herança é expressada pela palavra "extends" EX : public class Herdeiro extends Herança.
+
+Pode-se sim chamar qualquer método da classe mãe. Uma classe pode ter diversas "filhas e netas" (que herdam umas das outras) mas não podemos escolher o que será herdado.
+
+TIPOS DE HERANÇA
+
+Herança única
+Se uma classe estende uma classe adicional, essa forma de herança é chamada herança de nível único.
+public class A (………..)
+public class B extends A (………..)
+
+Herança multinível
+public class A ( ……………… )
+public class B extends A ( ……………… )
+public class C extends B ( ……………… )
+
+Se uma classe estende uma classe adicional, que pode ser estendida por simplesmente uma classe adicional, essa forma de herança é chamada de herança multinível.
+A classe A é estendida simplesmente pela classe B e, em seguida, a classe B é estendida pela classe C,
+que fornece à classe C acesso direto aos métodos de A() e de B() da classe A e também B simplesmente obtendo esses um objeto da classe C (sem precisar gerar objetos da classe A e B).
+
+Herança Hierárquica
+public class A ( ……………… )
+public class B extends A ( ……………… )
+public class C extends A ( ……………… )
+
+Quando duas classes herdam a mesma classe, isso é conhecido como herança hierárquica. Por exemplo, as classes B e C estendem a mesma classe A.
+Se uma classe tiver mais de uma classe filho (subclasses), bem como basicamente mais de um filho, tiver uma classe pai semelhante, simplesmente esse tipo de herança será chamado de herança hierárquica.
+
+Herança múltipla
+A sintaxe da herança múltipla
+
+public class A ( ……………… )
+public class B extends A ( ……………… )
+public class D extends A, B, C ( ……………….. )
+
+Nota: Herança múltipla não suportada em java.(problema corrijido com "interfaces")
+
+Java não suportaria várias heranças. Isso ocorre porque várias heranças causam ambiguidade e, portanto, o Java não a utiliza. A edição de diamantes ajuda na compreensão desse cenário.
+No entanto, várias heranças em Java podem ser realizadas usando interfaces.
+Independentemente de muitas quantidades de interfaces em uma classe com um método exato, não há indicação de ambiguidade, pois os métodos em uma interface geralmente são abstratos.
+A outra maneira é usar interfaces. As interfaces começarão a se tornar importantes.
+Uma interface especifica a forma de seus métodos, mas não fornece detalhes de implementação; portanto, você pode pensar nisso como a declaração de uma classe.
+você pode criar a interface com a palavra-chave interface:
+
+interface C(…………………………)
+interface b(…………………….)
+class a implements b, c(………………………)
+
+Podemos usar essas duas interfaces com a palavra-chave implementements
+
+Herança Híbrida
+A herança híbrida é principalmente uma mistura de mais de um tipo de herança. 
+Por exemplo, quando as classes A e B estendem a classe C Plus, uma outra classe D estende a classe A, depois disso, pode ser uma herança híbrida, pois é a variedade de herança única e hierárquica.
+
+public class C ( ……………… )
+public class A extends C ( ……………… )
+public class B extends C ( ……………….. )
+
+public class D ( ……………… )
+public class D extends A ( ……………… )
+A e D te mesmo valor hierárquico
+
+
+VANTAGENS DA HERANÇA 
+Considerado um dos principais recursos da herança, é usado para diminuir a quantidade de código duplicado em um formulário de aplicativo, compartilhando o código comum entre muitas subclasses. 
+Onde código igual pode ser obtido em duas classes relacionadas, a hierarquia normalmente pode ser refatorada para transferir o código comum para uma superclasse mútua.
+Isso resultará em uma organização superior do código, bem como em unidades de compilação mais fáceis de tamanho menor.
+
+Herança : ele pode criar código de aplicativo muito mais adaptável para modificar simplesmente porque as classes que herdam de uma superclasse padrão podem ser usadas de forma intercambiável.
+Quando o tipo de retorno de um procedimento é a superclasse.
+Reutilização - capacidade de gerenciar métodos públicos de uma classe base sem reescrever o similar.
+Extensibilidade - estendendo a lógica da classe base de acordo com a lógica de negócios da classe derivada.
+Ocultar dados - a classe base pode querer manter alguns dados privados, para que nunca sejam modificados pela classe derivada.
+Substituindo - Com herança, podemos substituir os métodos da classe base para que uma implementação importante do método da classe base possa ser concluída na classe derivada.
+
+=============== PROTECTED ===================
+
+O modificador protected torna o membro acessível às classes do mesmo pacote ou através de herança, 
+seus membros herdados não são acessíveis a outras classes fora do pacote em que foram declarados.
+
+=============== POLIMORFISMO ===================
+
+Polimorfismo é o princípio pelo qual duas ou mais classes derivadas de uma mesma superclasse podem invocar métodos que têm a mesma identificação (assinatura) mas comportamentos distintos, 
+especializados para cada classe derivada, usando para tanto uma referência a um objeto do tipo da superclasse.
+
+Referências de tipos de classes mais genéricas referenciam objetos mais específicos.O metodo de mesmonome especifico da classe em questao que ira ser ultilizada 
+
+Existem três tipos de polimorfismo: ad hoc, que significa sobrecarga (overloading), 
+paramétrico, que quer dizer modelo com uma estrutura predefinida (template) e polimorfismo de herança, ou seja, de redefinição e especialização (overriding).
+
+=============== ABSTRACT ===================
+
+Este tipo de classe possui uma característica de não permitir que novos objetos sejam instanciados a partir desta classe (mas pode-se instanciar o tipo).
+São classes feitas especialmente para serem modelos para suas classes derivadas que , via de regra, deverão sobrescrever os métodos para realizar a implementação dos referidos.
+Em uma classe abstrata, podemos escrever que determinado método(sem o seu corpo/comportamento) será sempre escrito pelas classes filhas.
+Isto é, um método abstrato. Ele indica que todas as classes filhas devem reescrever esse método(com o devido corpo/comportamento), ou não compilarão.
+
+public abstract class Classe {}
+public abstract double metodo();
+
+=============== INTERFACES ===================
+
+Interface é um recurso que apresenta inúmeras vantagens no sentido da modelagem e instanciação de objetos.
+
+Uma interface é similar a um contrato, através dela podemos especificar quais métodos as classes que implementam esta interface são obrigados a implementar.
+
+Na interface declaramos os métodos de forma abstrata, tendo apenas sua assinatura e terminando com ponto e vírgula ( ; ) e todos os métodos precisam ser públicos.
+Podemos declarar atributos, porém todos os atributos de uma interface são constantes publicas. Uma interface pode estender (sub-interface) outras interfaces.
+
+Dentro da interface não podemos:
+
+implementar método
+construtor
+estender classe
+implementar outra interface
+não pode ser final
+
+Quando uma classe implementa uma interface, está classe obrigatoriamente precisa implementar todos os métodos declarados na interface,
+apenas quando usamos classes abstratas implementando interface que não precisamos obrigatoriamente implementar todos os métodos
+
+A sintaxe da linguagem, a herança é expressada pela palavra "implements" EX : public class Herdeiro extends Herança implements Contrato.
+
+
+=====================CONCLUSÕES========================
+
+Em comparação com o conceito de herança, onde temos os pilares da reutilização de código e do polimorfismo, quando falamos de interfaces, não há código concreto, assim,
+o objetivo não é a reutilização de código, ela é, sim, uma alternativa ao polimorfismo.
+
+Se quisermos somente uma solução pura de polimorfismo, podemos utilizar a interface.
+
+Mas e se quisermos somente a reutilização de código, é recomendado utilizar a herança? Não, a herança é recomendada quando há a combinação das necessidades de reutilização de código e polimorfismo.
+E se a necessidade for somente a reutilização de código? 
+
+O relacionamento de composição difere do relacionamento de herança, naquele, há uma interdependência onde a existência de um depende da do outro, já na composição, cada classe existe independentemente.
+
+Isso significa que, quando queremos fazer apenas a reutilização de código, podemos utilizar a composição. Teoricamente, podemos trabalhar sem a herança com o Java.
+

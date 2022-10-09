@@ -1,0 +1,75 @@
+O nome “servlet” vem do inglês e dá uma ideia de servidor pequeno cujo objetivo basicamente é receber requisições HTTP,
+processá-las e responder ao cliente, essa resposta pode ser um HTML, uma imagem etc.
+
+Em Java, procuramos sempre trabalhar orientado a objeto, portanto essa nosso servlet será também um objeto de uma classe Java.
+
+O funcionamento se dá da seguinte forma:
+
+Cliente (navegador) faz uma requisição HTTP ao servidor.
+O servlet responsável trata a requisição e responde ao cliente de acordo.
+O cliente recebe os dados e exibe.
+
+@WebServlet: pressionaremos o atalho "Ctrl + Space" para realizar a importação. É por meio dessa anotação que poderemos definir um urlPatterns,
+que é nada mais que o nome do Servlet na URL que utilizaremos no navegador. isso é feio para não fazer a modificação  no arquivo .xml .
+
+ex1:
+package br.com.alura.gerenciador.servlet;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+//Servlet é um objeto especial armazenado dentro do projeto,
+//e sua particularidade consiste na possibilidade de o chamarmos via protocolo HTTP.
+
+//essa anotação fornece um apelido no endereço URL que remete ao Servlet do projeto gerenciador
+@WebServlet(urlPatterns = "/oi") //padrões de URL
+public class OiMundoServlet extends HttpServlet{
+
+private static final long serialVersionUID = 1L;//remove o warnig da classe
+	
+	@Override				
+	protected void service(HttpServletRequest arg0, HttpServletResponse arg1) throws IOException {
+		
+		/* PrintWriter :: Imprime representações formatadas de objetos em um fluxo de saída de texto.
+		 * getWriter() :: Retorna um objeto PrintWriter que pode enviar texto de caractere ao cliente
+		 */
+		
+		PrintWriter out = arg1.getWriter();
+		//imprime para o fluxo de resposta para o navegador
+		out.println("<html>");
+        out.println("<body>");
+        out.println("oi mundo, parabens vc escreveu o primeiro servlets.");
+        out.println("</body>");
+        out.println("</html>");
+		
+        System.out.println("o servlet OiMundoServlet foi chamado");
+	}
+}
+
+ex2:
+package br.com.alura.gerenciador.servlet;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+@WebServlet("/novaEmpresa")
+public class NovaEmpresaServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("Cadastrando nova empresa");
+        String nomeEmpresa = request.getParameter("nome");
+        PrintWriter out = response.getWriter();
+        out.println("<html><body>Empresa " + nomeEmpresa + " cadastrada com sucesso!</body></html>");
+	}
+
+}
